@@ -72,6 +72,8 @@
   <ItemGroup>
     <Content Include="Connect.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Login.aspx" />
+    <Content Include="Register.aspx" />
     <Content Include="Show.aspx" />
     <Content Include="Web.config" />
     <Content Include="Add.aspx" />
@@ -85,8 +87,16 @@
     <Compile Include="Connect.aspx.designer.cs">
       <DependentUpon>Connect.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Crypto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Add.aspx.cs">
@@ -97,6 +107,13 @@
       <DependentUpon>Add.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReadData.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Show.aspx.cs">
       <DependentUpon>Show.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

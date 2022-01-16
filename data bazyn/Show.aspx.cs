@@ -9,6 +9,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 
 
+
 namespace data_bazyn
 {
 
@@ -16,26 +17,61 @@ namespace data_bazyn
     {
         protected void Page_Load(object sender, EventArgs e) {
             cn.connect().Open();
-            lTitle.Text = "Dane z " + cn.db + ":" + cn.table;
+            lTitle.Text = "Dane z " + cn.db + " / " + cn.table;
             if (!Page.IsPostBack)
             {
-                Searched(tbSearch.Text);
+                Searched();
             }
         }
-
-        void Searched(string isValue)
+        public static IList<T> GetAllControls<T>(Control control) where T : Control
         {
-            if (isValue != "")
+            var lst = new List<T>();
+            foreach (Control item in control.Controls)
             {
-                GridView1.DataSource = ReadData.Read("Select * From " + cn.table + " Where Title='" + tbSearch.Text + "'");
+                var ctr = item as T;
+                if (ctr != null)
+                    lst.Add(ctr);
+                else
+                    lst.AddRange(GetAllControls<T>(item));
+
             }
-            else
+            return lst;
+        }
+        void Searched()
+        {
+            string query = "Select * From `" + cn.table + "` Where ";
+            var TextBoxes = GetAllControls<TextBox>(this);
+            foreach (TextBox lst in TextBoxes)
             {
-                GridView1.DataSource = ReadData.Read("Select * From " + cn.table);
+                if (lst.Text.Trim() != "")
+                {
+                    if (lst.ID == "Pages")
+                    {
+                        query += "`" + lst.ID + "`=" + lst.Text + " AND ";
+                    }
+                    else
+                    {
+                        query += "`" + lst.ID + "`='" + lst.Text + "' AND ";
+                    }
+
+                }
             }
+            string text = query.Substring(0, query.Length - 4);
+            GridView1.DataSource = ReadData.Read(text);
+           
             GridView1.DataBind();
         }
+        protected void btnShow_Click(object sender, EventArgs e)
+        {
+            var TextBoxes = GetAllControls<TextBox>(this);
+            foreach (TextBox lst in TextBoxes)
+            {
+                lst.Text = "";
+            }
+            GridView1.DataSource = ReadData.Read("Select * From `" + cn.table + "`");
 
+            GridView1.DataBind();
+        }
         protected void bAdd_Click(object sender, EventArgs e)
         {
             Response.Redirect("Add.aspx");
@@ -45,24 +81,24 @@ namespace data_bazyn
         {   
             MySqlConnection connection = cn.connect();
             connection.Open();
-            string query = "Delete From " + cn.table + " where Id = @id";
+            string query = "Delete From `" + cn.table + "` where `Id` = @id";
             MySqlCommand comm = new MySqlCommand(query, connection);
             comm.Parameters.AddWithValue("@id", Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()));
             comm.ExecuteNonQuery();
-            Searched(tbSearch.Text);
+            Searched();
         }
 
         protected void GridView1_RowEditing(object sender, GridViewEditEventArgs e)
         {
             GridView1.EditIndex = e.NewEditIndex;
-            Searched(tbSearch.Text);
+            Searched();
         }
 
         protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             MySqlConnection connection = cn.connect();
             connection.Open();
-            string query = "Update " + cn.table + " Set Authors=@A, Title=@T, Release_date=@R, ISBN=@I, Format=@F, Pages=@P, Description=@D Where Id = @id";
+            string query = "Update `" + cn.table + "` Set `Authors`=@A, `Title`=@T, `Release_date`=@R, `ISBN`=@I, `Format`=@F, `Pages`=@P, `Description`=@D Where `Id` = @id";
             MySqlCommand comm = new MySqlCommand(query, connection);
 
             comm.Parameters.AddWithValue("@id", Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value.ToString()));
@@ -75,17 +111,19 @@ namespace data_bazyn
             comm.Parameters.AddWithValue("@D", (GridView1.Rows[e.RowIndex].FindControl("Description") as TextBox).Text.Trim());
             comm.ExecuteNonQuery();
             GridView1.EditIndex = -1;
-            Searched(tbSearch.Text);
+            Searched();
         }
 
         protected void GridView1_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
         {
             GridView1.EditIndex = -1;
-            Searched(tbSearch.Text);
+            Searched();
         }
         protected void btnSearch_Click(object sender, EventArgs e)
         {
-            Searched(tbSearch.Text);
+            Searched();
         }
+
+
     }
 }

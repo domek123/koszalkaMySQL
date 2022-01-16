@@ -13,6 +13,10 @@ namespace data_bazyn
         protected void Page_Load(object sender, EventArgs e)
         {
             lInfo.Text = "Połącz się z bazą danych";
+            tbServer.Text = "localhost";
+            tbDatabase.Text = "testowa";
+            tbTable.Text = "table";
+            tbUser.Text = "root";
         }
         protected void bConnect_Click(object sender, EventArgs e)
         {
@@ -24,7 +28,26 @@ namespace data_bazyn
                 cn.table = tbTable.Text;
                 MySqlConnection conn = cn.connect();
                 conn.Open();
-                Response.Redirect("Show.aspx");
+                try
+                {
+                    string query = "CREATE TABLE `" + cn.table + "` (" +
+                    "Id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY," +
+                    "Authors VARCHAR(255) NOT NULL," +
+                    "Title VARCHAR(255) NOT NULL," +
+                    "Release_date CHAR(10) NOT NULL," +
+                    "ISBN CHAR(20) NOT NULL," +
+                    "Format CHAR(3) NOT NULL," +
+                    "Pages SMALLINT(6) NOT NULL," +
+                    "Description VARCHAR(255) NOT NULL)" ;
+                    MySqlCommand comm = new MySqlCommand(query, conn);
+                    comm.ExecuteNonQuery();
+                    Console.WriteLine("utworzono tabele");
+                }
+                catch
+                {
+                    Console.WriteLine("taka tabela juz istnieje");
+                }
+                Response.Redirect("Register.aspx");
             }
             catch
             {

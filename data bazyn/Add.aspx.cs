@@ -17,25 +17,30 @@ namespace data_bazyn
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            insert(tbAuthor.Text, tbTitle.Text, tbDate.Text, tbISBN.Text, tbFormat.Text, Int32.Parse(tbPage.Text), TbDescription.Text);
-            Response.Redirect("Show.aspx");
+            try
+            {
+                insert(tbAuthor.Text, tbTitle.Text, tbDate.Text, tbISBN.Text, tbFormat.Text, Int32.Parse(tbPage.Text), TbDescription.Text);
+                Response.Redirect("Show.aspx");
+            }
+            catch
+            {
+                lInfo.Text = "dane nie mogą być puste";
+            }
+            
+            
         }
 
 
-        public int insert(string Author, string title, string date, string isbn,string format,int pages,string desc)
+        public int insert(string Author, string title, string date, string isbn, string format, int pages, string desc)
         {
-            if (Author == "" | title == "" | date == "" | isbn == "" | format == "" | pages.ToString() == "" | desc == "")
-            {
-                lInfo.Text = "nie moze byc puste pole";
-                return -1;
-            }
+
             MySqlConnection conn = cn.connect();
             conn.Open();
             if (conn == null) return -1;
             MySqlCommand command = conn.CreateCommand();
             try
             {
-                command.CommandText = "INSERT INTO " + cn.table + " (Authors,Title,Release_date,ISBN,Format,Pages,Description) VALUES ('" + Author + "', '" + title + "', '" + date + "', '" + isbn + "', '" + format + "', '" + pages + "', '" + desc + "');";
+                command.CommandText = "INSERT INTO `" + cn.table + "` (`Authors`, `Title`, `Release_date`, `ISBN`, `Format`, `Pages`, `Description`) VALUES ('" + Author + "', '" + title + "', '" + date + "', '" + isbn + "', '" + format + "', " + pages + ", '" + desc + "');";
                 command.ExecuteNonQuery();
             }
             catch(MySql.Data.MySqlClient.MySqlException ex)

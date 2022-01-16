@@ -14,17 +14,20 @@
             height: 22px;
         }
         .auto-style4 {
-            text-align: left;
+            text-align: center;
         }
         .auto-style5 {
             text-align: left;
-            height: 283px;
-        }
-        .auto-style6 {
-            width: 65px;
+            height: 293px;
         }
         .auto-style7 {
             margin-bottom: 0px;
+            position: relative;
+            left: -1px;
+            top: 0px;
+        }
+        .nowyStyl1 {
+            top: 5px;
         }
     </style>
 </head>
@@ -32,7 +35,7 @@
     <form id="form1" runat="server">
         <div id="All" class="auto-style5">
         <div class="auto-style4">
-            <asp:Label ID="lTitle" runat="server"></asp:Label>
+            <asp:Label ID="lTitle" runat="server" BackColor="#990033" Width="100%"></asp:Label>
         </div>
             <table class="auto-style1">
                 <tr>
@@ -42,6 +45,9 @@
                                 OnRowEditing="GridView1_RowEditing"
                                 OnRowUpdating="GridView1_RowUpdating"
                                 OnRowCancelingEdit="GridView1_RowCancelingEdit"
+                                HeaderStyle-BackColor="Blue"
+                                BackColor="Green"
+                                Width="100%"
                                 >
                                 <Columns>
                                     <asp:TemplateField HeaderText="Id">
@@ -100,7 +106,7 @@
                                             <asp:Label runat="server" Text='<%# Eval("Pages")%>' />
                                         </ItemTemplate>
                                         <EditItemTemplate>
-                                            <asp:TextBox ID="Pages" runat="server" Text='<%# Eval("Pages")%>' ></asp:TextBox> 
+                                            <asp:TextBox ID="Pages" runat="server" Text='<%# Eval("Pages")%>'></asp:TextBox> 
                                         </EditItemTemplate>
                                     </asp:TemplateField>
 
@@ -128,18 +134,28 @@
                     </td>
                 </tr>
             </table>
-            <asp:Button ID="bAdd" runat="server" OnClick="bAdd_Click" Text="Add" />
-            <table class="auto-style1">
-                <tr>
-                    <td class="auto-style6">
-                        <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" />
-                    </td>
-                    <td>
-                        <asp:Label ID="Label2" runat="server" Text="Search by Title"></asp:Label>
-                        <asp:TextBox ID="tbSearch" runat="server" CssClass="auto-style7"></asp:TextBox>
-                    </td>
-                </tr>
-            </table>
+            <div>
+            <asp:Button ID="bAdd" runat="server" OnClick="bAdd_Click" Text="Add" Width="100px" />
+                <asp:Label ID="Label1" runat="server" Height="19px" Text="Id" Width="110px"></asp:Label>
+                <asp:Label ID="Label2" runat="server" Height="19px" Text="Authors" Width="110px"></asp:Label>
+                <asp:Label ID="Label3" runat="server" Height="19px" Text="Title" Width="110px"></asp:Label>
+                <asp:Label ID="Label4" runat="server" Height="19px" Text="ISBN" Width="110px"></asp:Label>
+                <asp:Label ID="Label5" runat="server" Height="19px" Text="Format" Width="110px"></asp:Label>
+                <asp:Label ID="Label6" runat="server" Height="19px" Text="Pages" Width="110px"></asp:Label>
+            </div>
+            <div>
+                <div aria-multiline="True">
+                        <asp:Button ID="btnSearch" runat="server" OnClick="btnSearch_Click" Text="Search" Width="100px" />
+                        <asp:TextBox ID="Id" runat="server" Width="100px"></asp:TextBox>
+                        <asp:TextBox ID="Authors" runat="server" CssClass="auto-style7" Width="100px"></asp:TextBox>
+                        <asp:TextBox ID="Title" runat="server" Width="100px"></asp:TextBox>
+                        <asp:TextBox ID="ISBN" runat="server" Width="100px"></asp:TextBox>
+                        <asp:TextBox ID="Format" runat="server" Width="100px"></asp:TextBox>
+                        <asp:TextBox ID="Pages" runat="server" Width="100px"></asp:TextBox>
+                        <br />
+                        <asp:Button ID="btnShow" runat="server" OnClick="btnShow_Click" Text="Show All" Width="100px" />
+                    </div>
+            </div>
         </div>
     </form>
 </body>

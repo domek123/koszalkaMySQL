@@ -11,7 +11,7 @@ namespace data_bazyn
 {
 
 
-    public partial class Show
+    public partial class Register
     {
 
         /// <summary>
@@ -24,40 +24,31 @@ namespace data_bazyn
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Kontrolka lTitle.
+        /// Kontrolka Rejestracja.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lTitle;
+        protected global::System.Web.UI.WebControls.Label Rejestracja;
 
         /// <summary>
-        /// Kontrolka GridView1.
+        /// Kontrolka Login.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
+        protected global::System.Web.UI.WebControls.Label Login;
 
         /// <summary>
-        /// Kontrolka bAdd.
+        /// Kontrolka tbLogin.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button bAdd;
-
-        /// <summary>
-        /// Kontrolka Label1.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox tbLogin;
 
         /// <summary>
         /// Kontrolka Label2.
@@ -69,13 +60,13 @@ namespace data_bazyn
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// Kontrolka Label3.
+        /// Kontrolka tbPassword.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.TextBox tbPassword;
 
         /// <summary>
         /// Kontrolka Label4.
@@ -87,93 +78,57 @@ namespace data_bazyn
         protected global::System.Web.UI.WebControls.Label Label4;
 
         /// <summary>
-        /// Kontrolka Label5.
+        /// Kontrolka tbCheck.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.TextBox tbCheck;
 
         /// <summary>
-        /// Kontrolka Label6.
+        /// Kontrolka Label3.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// Kontrolka btnSearch.
+        /// Kontrolka tbEmail.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox tbEmail;
 
         /// <summary>
-        /// Kontrolka Id.
+        /// Kontrolka btnSignUp.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Id;
+        protected global::System.Web.UI.WebControls.Button btnSignUp;
 
         /// <summary>
-        /// Kontrolka Authors.
+        /// Kontrolka btnLog.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Authors;
+        protected global::System.Web.UI.WebControls.Button btnLog;
 
         /// <summary>
-        /// Kontrolka Title.
+        /// Kontrolka lInfo.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Title;
-
-        /// <summary>
-        /// Kontrolka ISBN.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ISBN;
-
-        /// <summary>
-        /// Kontrolka Format.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Format;
-
-        /// <summary>
-        /// Kontrolka Pages.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Pages;
-
-        /// <summary>
-        /// Kontrolka btnShow.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnShow;
+        protected global::System.Web.UI.WebControls.Label lInfo;
     }
 }
