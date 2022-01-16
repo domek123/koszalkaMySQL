@@ -58,7 +58,7 @@ namespace data_bazyn
                                 MailMessage message;
                                 try
                                 {
-                                    message = new MailMessage(tbEmail.Text, "dominikw883@gmail.com");
+                                    message = new MailMessage(tbEmail.Text, "trzypdwa@gmail.com");
                                     message.Subject = "Potwierdzenie wysłania";
                                     message.Body = "zostałeś zajerestrowany do naszej usługi\n Twój login: " + tbLogin.Text + "\n Twójoje hasło: " + tbPassword.Text + "\n\n Pozdrawiamy \n Zespół JD100%";
                                     client = new SmtpClient
@@ -68,7 +68,7 @@ namespace data_bazyn
                                         EnableSsl = true,
                                         DeliveryMethod = SmtpDeliveryMethod.Network,
                                         UseDefaultCredentials = false,
-                                        Credentials = new NetworkCredential("dominikw883@gmail.com", "Train980")
+                                        Credentials = new NetworkCredential("trzypdwa@gmail.com", "2347@zsl")
                                     };
                                     client.Send(message);
                                 }
